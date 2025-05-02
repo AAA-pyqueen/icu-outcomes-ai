@@ -1,8 +1,11 @@
 import argparse
 import yaml
 import pandas as pd
+import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+from datetime import datetime
+from utils.update_model_registry import update_model_registry
 
 from sklearn.ensemble import RandomForestClassifier
 import tensorflow as tf
@@ -15,11 +18,11 @@ def load_config(config_path):
         return yaml.safe_load(file)
 
 # -------------- Load and Prepare Data ----------------
-def load_data(csv_path, input_features, output_label):
-    df = pd.read_csv(csv_path)
-    X = df[input_features]
-    y = df[output_label]
-    return train_test_split(X, y, test_size=0.2, random_state=42)
+data = pd.read_csv("data/icu_extended.csv")
+X = data.drop(columns=["survival"])
+y = data["survival"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # -------------- Random Forest ----------------
 def train_random_forest(X_train, X_test, y_train, y_test, config):
