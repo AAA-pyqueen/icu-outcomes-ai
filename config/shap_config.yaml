@@ -1,0 +1,21 @@
+explainability_tool: shap
+framework: shap
+model_target: random_forest
+background_sample_size: 100
+explain_features:
+  - age
+  - gender
+  - comorbidities
+  - oxygen_saturation
+  - heart_rate
+  - blood_pressure
+  - white_blood_cell_count
+  - creatinine
+  - temperature
+  - days_in_ICU
+visualizations:
+  - summary_plot
+  - dependence_plot
+  - force_plot
+save_outputs: true
+output_path: outputs/shap/
