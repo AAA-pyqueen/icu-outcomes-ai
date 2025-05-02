@@ -4,7 +4,7 @@ This project uses machine learning models to predict important patient outcomes 
 - Survival (binary classification)
 - Length of stay (regression)
 - Risk of complications (multi-class classification)
-- 
+  
 The goal is to develop an informative and research-ready AI tool for exploring ICU data and risk prediction, with potential clinical applications.
 
 **This project is in progress, please stop by for updates! Thank you for supporting my research!**
