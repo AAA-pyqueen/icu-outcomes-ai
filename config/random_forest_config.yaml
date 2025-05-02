@@ -1,0 +1,26 @@
+model_type: random_forest
+framework: scikit-learn
+input_features:
+  - age
+  - gender
+  - comorbidities
+  - oxygen_saturation
+  - heart_rate
+  - blood_pressure
+  - white_blood_cell_count
+  - creatinine
+  - temperature
+  - days_in_ICU
+output_label: outcome
+hyperparameters:
+  n_estimators: 100
+  max_depth: 10
+  min_samples_split: 5
+  min_samples_leaf: 2
+  random_state: 42
+evaluation_metrics:
+  - accuracy
+  - precision
+  - recall
+  - f1
+  - roc_auc
