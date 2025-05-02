@@ -1,30 +1,38 @@
-model_name: ICU_RandomForest
-version: 1.0
-author: Aquesha Addison
-description: >
+author: Aquesha Addison, RHIA
+models:
+  - name: RandomForest ICU Outcome Predictor
+    version: 1.0
+    description: >
   Random Forest Classifier for predicting ICU patient outcomes based on clinical and demographic features
+    config_file: config/random_forest_config.yaml
+    input_features: ["age", "sex", "heart_rate", "blood_pressure", "temperature", "respiratory_rate"]
+    target_variable: "survival"
+    model_file: models/random_forest_model.pkl
+    metrics:
+      accuracy: 0.85
+      precision: 0.80
+      recall: 0.78
+    last_trained: 2025-05-02
 
-features:
-  - age
-  - gender
-  - heart_rate
-  - bp_systolic
-  - bp_diastolic
-  - resp_rate
-  - oxygen_saturation
-  - temperature
-  - wbc_count
-  - hemoglobin
-  - comorbidity_score
-  - length_of_stay
+  - name: Deep Learning ICU Risk Classifier
+    version: 1.0
+    config_file: config/deep_learning_config.yaml
+    input_features: ["age", "sex", "lab_results", "comorbidities", "vitals"]
+    target_variable: "complication_risk"
+    model_file: models/brain_classifier_model.h5
+    metrics:
+      accuracy: 0.88
+      precision: 0.86
+      recall: 0.83
+    last_trained: 2025-05-02
 
-target: outcome
-
-model_params:
-  n_estimators: 100
-  random_state: 42
-  test_size: 0.3
-
-explainability:
-  method: SHAP
-  importance_plot: bar
+  - name: SHAP Explainability Model
+    version: 1.0
+    config_file: config/shap_config.yaml
+    input_features: ["age", "heart_rate", "spo2", "lab_glucose", "creatinine"]
+    target_variable: "length_of_stay"
+    model_file: models/shap_explainer.pkl
+    metrics:
+      r_squared: 0.65
+    importance_plot: bar
+    last_trained: 2025-05-02
