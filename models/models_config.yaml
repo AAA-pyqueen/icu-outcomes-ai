@@ -1,5 +1,30 @@
-model: RandomForestClassifier
-parameters:
+model_name: ICU_RandomForest
+version: 1.0
+author: Aquesha Addison
+description: >
+  Random Forest Classifier for predicting ICU patient outcomes based on clinical and demographic features
+
+features:
+  - age
+  - gender
+  - heart_rate
+  - bp_systolic
+  - bp_diastolic
+  - resp_rate
+  - oxygen_saturation
+  - temperature
+  - wbc_count
+  - hemoglobin
+  - comorbidity_score
+  - length_of_stay
+
+target: outcome
+
+model_params:
   n_estimators: 100
-  max_depth: 8
   random_state: 42
+  test_size: 0.3
+
+explainability:
+  method: SHAP
+  importance_plot: bar
