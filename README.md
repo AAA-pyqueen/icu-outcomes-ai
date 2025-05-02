@@ -37,7 +37,7 @@ icu-outcomes-ai/
 └── .gitignore
 ```
 ## 🧪 Sample Data
-You can use the provided **icu_data.csv** file in data/raw/ to test the project. The data has been synthesized for educational use.
+You can use the provided **icu_data.csv** or **icu_extended_data.csv** file in data/raw/ to test the project. The data has been synthesized for educational use.
 - outcome: 1 = Survived, 0 = Did not survive
 - length_of_stay: In days
 - comorbidity_score: 0–5 scale based on existing conditions
