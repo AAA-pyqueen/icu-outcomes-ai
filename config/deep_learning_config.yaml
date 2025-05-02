@@ -1,0 +1,30 @@
+model_type: deep_learning
+framework: tensorflow
+input_features:
+  - age
+  - gender
+  - comorbidities
+  - oxygen_saturation
+  - heart_rate
+  - blood_pressure
+  - white_blood_cell_count
+  - creatinine
+  - temperature
+  - days_in_ICU
+output_label: outcome
+hyperparameters:
+  epochs: 25
+  batch_size: 32
+  learning_rate: 0.001
+  dropout_rate: 0.3
+  hidden_layers: [64, 32]
+  activation: relu
+  output_activation: sigmoid
+  loss_function: binary_crossentropy
+  optimizer: adam
+evaluation_metrics:
+  - accuracy
+  - precision
+  - recall
+  - f1
+  - AUC
